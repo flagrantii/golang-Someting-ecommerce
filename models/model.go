@@ -1,5 +1,9 @@
 package models
 
+import (
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
+
 type User struct {
 	ID              int    `json:"id"`
 	Username        string `json:"username"`
@@ -11,14 +15,14 @@ type User struct {
 }
 
 type Product struct {
-	ID          int      `json:"id"`
-	Name        string   `json:"name"`
-	Description string   `json:"description"`
-	Price       float64  `json:"price"`
-	Quantity    int      `json:"quantity"`
-	Category    string   `json:"category"`
-	Images      []string `json:"images"`
-	SellerID    int      `json:"seller_id"`
+	ID          primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+	Name        string             `json:"name" bson:"name"`
+	Description string             `json:"description" bson:"description"`
+	Price       float64            `json:"price" bson:"price"`
+	Qunatity    int                `json:"quantity" bson:"quantity"`
+	CategoryID  int                `json:"category_id" bson:"category_id"`
+	Images      []string           `json:"images" bson:"images"`
+	SellerID    int                `json:"seller_id" bson:"seller_id"`
 }
 
 type Order struct {
